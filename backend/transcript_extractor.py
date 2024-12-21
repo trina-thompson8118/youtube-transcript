@@ -1,7 +1,7 @@
-from flask import Flask, request, send_file, jsonify
-from flask_cors import CORS  # Import CORS
+from flask import Flask, request, jsonify, send_file
+from flask_cors import CORS
 from youtube_transcript_api import YouTubeTranscriptApi
-import os
+import io
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -22,13 +22,18 @@ def extract_transcript():
         transcript = YouTubeTranscriptApi.get_transcript(video_id)
         transcript_text = "\n".join([f"{entry['start']}: {entry['text']}" for entry in transcript])
 
-        # Save the transcript to a file
-        file_path = f"transcript_{video_id}.txt"
-        with open(file_path, "w") as file:
-            file.write(transcript_text)
+        # Create an in-memory file-like object
+        transcript_file = io.BytesIO()
+        transcript_file.write(transcript_text.encode('utf-8'))
+        transcript_file.seek(0)  # Rewind the file pointer to the beginning
 
-        # Return the file to the client
-        return send_file(file_path, as_attachment=True)
+        # Send the file to the client as an attachment
+        return send_file(
+            transcript_file,
+            as_attachment=True,
+            download_name=f"transcript_{video_id}.txt",
+            mimetype='text/plain'
+        )
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
