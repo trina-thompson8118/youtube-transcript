@@ -30,41 +30,56 @@ For a demo of this please visit [DEMO]().
 ### Backend Setup
 
 1.  **Clone the repository:**
-```bash git clone https://github.com/your-username/youtube-transcript-extractor.git 
-cd youtube-transcript-extractor/backend
-```
+
+    ```bash
+    git clone <repository-url>
+    cd <repository-directory>
+    ```
 
 2.  **Create a virtual environment and activate it:**
-```bash python -m venv .venv source .venv/bin/activate # On Windows: .venv\Scripts\activate
-```
+
+    ```bash
+    python -m venv .venv source .venv\Scripts\activate
+    ```
 
 3.  **Install dependencies:**
-```bash pip install flask flask-cors youtube-transcript-api
-```
+
+    ```bash
+    pip install flask flask-cors youtube-transcript-api
+    ```
 
 4.  Start the backend server:
-```bash python app.py 
-```
-The backend runs on 'http://localhost:5000'.
+
+    ```bash
+    python <app_name>.py
+    ```
+    The backend runs on 'http://localhost:5000'.
 
 ### Frontend Setup
 
 1.  **Navigate to the frontend directory:**
-```bash cd ../frontend
-```
+
+    ```bash
+    cd ../frontend
+    ```
 
 2.  **Install dependencies:**
-```bash npm install
-```
+
+    ```bash
+    npm install
+    ```
 
 3.  **Create a `.env` file in the `frontend` directory with the following content:**
-```NEXT_PUBLIC_API_URL=http://localhost:5000
-```
+
+    ```bash
+    NEXT_PUBLIC_API_URL=http://localhost:5000
+    ```
 
 4.  **Start the development server:**
-```bash npm run dev
-```
-The frontend runs on `http://localhost:3000`.
+
+    ```bash
+    npm run dev
+    ```
 
 ## Usage
 
