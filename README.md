@@ -2,8 +2,6 @@
 
 A React-based web application that allows users to extract and download transcripts from YouTube videos with ease. This app features a modern UI and provides a smooth experience for generating transcripts with error handling and toast notifications.
 
-For a demo of this please visit [DEMO]().
-
 ## Features
 
 *   Transcript Extraction: Extract transcripts from any YouTube video.
